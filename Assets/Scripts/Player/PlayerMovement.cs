@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody _rigidbody;
 
-    public float Speed = 20f;
+    public float Speed = 40f;
     public bool UseSpeed = false;
 
     // Start is called before the first frame update

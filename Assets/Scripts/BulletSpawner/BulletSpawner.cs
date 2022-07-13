@@ -17,8 +17,8 @@ public class BulletSpawner : MonoBehaviour
     void Update()
     {
         _elapsedTime += Time.deltaTime;
-        _randomTime = Random.Range(1.0f, 3.0f);
-        if (_elapsedTime >= _randomTime)
+        
+        if (_elapsedTime >= 0.5f)
         {
             _elapsedTime = 0.0f;
           

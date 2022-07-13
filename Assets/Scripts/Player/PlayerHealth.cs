@@ -23,7 +23,7 @@ public class PlayerHealth : MonoBehaviour
         if (other.tag == "Bullet")
         {
             Die();
-            Debug.Log($"TIME : {_lapTime}");
+           
             
 
         }
