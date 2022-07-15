@@ -5,7 +5,6 @@ using UnityEditor;
 public class Turret : MonoBehaviour
 {
     public GameObject BulletPrefab;
-    public GameObject Player;
     public Transform Target;
     private float elapsedTime;
     public bool isDetected;
