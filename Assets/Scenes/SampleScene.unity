@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 8457794023554328080, guid: 89d6f5619471bc944991c57bccaa0378, type: 3}
       propertyPath: m_Name
-      value: RightBulletSpawner
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 8457794023554328081, guid: 89d6f5619471bc944991c57bccaa0378, type: 3}
       propertyPath: Player

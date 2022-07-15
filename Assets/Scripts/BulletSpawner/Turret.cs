@@ -10,7 +10,7 @@ public class Turret : MonoBehaviour
     private float spawnRateMax = 2f;
     private float spawnRate;
     private float elapsedTime;
-    Vector3 getVec = new Vector3(1, 0, 0);
+
     void Start()
     {
         spawnRate = Random.Range(spawnRateMin, spawnRateMax);
@@ -20,9 +20,7 @@ public class Turret : MonoBehaviour
         if (other.tag == "Player")
         {
             Transform Target = other.transform;
-            Vector3 TargetVec = Target.position.normalized - transform.position.normalized;
-            if (Vector3.Dot(Vector3.right, TargetVec) >= 0.5 && Vector3.Dot(Vector3.right, TargetVec) < 1)
-            {
+          
                 elapsedTime += Time.deltaTime;
                 transform.LookAt(Target);
                 if (elapsedTime >= spawnRate)
@@ -31,7 +29,7 @@ public class Turret : MonoBehaviour
                     elapsedTime = 0;
                     spawnRate = Random.Range(spawnRateMin, spawnRateMax);
                 }
-            }
+            
         }
     }
 }
