@@ -1,14 +1,12 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 public class Turret : MonoBehaviour
 {
     public GameObject BulletPrefab;
-    public float TurretRotationSpeed = 15f;
+    public Transform Target;
     private float elapsedTime;
     public bool isDetected;
-    public Transform Target;
     float dotValue = 0f;
     float crossValue = 0f;
     public float angleRange = 60f;
@@ -22,7 +20,7 @@ public class Turret : MonoBehaviour
         Vector3 direction = Target.position - transform.position;
         if (direction.magnitude < distance)
         {
-            if (Vector3.Dot(direction.normalized, transform.forward) > dotValue && Vector3.Cross(direction.normalized,transform.forward) < crossValue)
+            if (Vector3.Dot(direction.normalized, transform.forward) > dotValue)
             {
                
                 isDetected = true;
@@ -43,7 +41,8 @@ public class Turret : MonoBehaviour
         if (other.tag == "Player")
         {
             Target = other.transform;
-          
+            if (isDetected)
+            {
                 elapsedTime += Time.deltaTime;
                 transform.LookAt(Target);
                 if (elapsedTime >= 0.5f)
@@ -51,6 +50,7 @@ public class Turret : MonoBehaviour
                     GameObject bullet = Instantiate(BulletPrefab, transform.position, transform.rotation);
                     elapsedTime = 0;
                 }
+            }
             
         }
     }
