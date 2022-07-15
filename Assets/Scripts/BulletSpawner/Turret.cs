@@ -9,17 +9,15 @@ public class Turret : MonoBehaviour
     public Transform Target;
     private float elapsedTime;
     public bool isDetected;
-    float dotValue = 0f;
-    float crossValue = 0f;
     public float angleRange = 60f;
     public float distance = 20f;
-    public float rot;
     public float Speed = 100f;
-    Vector3 forVec;
+    public float rot;
+    Vector3 forwardVec;
 
     private void Start()
     {
-        forVec = transform.forward;
+        forwardVec = transform.forward;
     }
 
     void Update()
@@ -47,13 +45,12 @@ public class Turret : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            dotValue = Mathf.Cos(Mathf.Deg2Rad * (angleRange / 2));
             Vector3 direction = Target.position - transform.position;
-            Vector3 crossVec = Vector3.Cross(direction.normalized, forVec);
+            Vector3 crossVec = Vector3.Cross(direction.normalized, forwardVec);
 
             if (direction.magnitude < distance)
             {
-                if (Vector3.Dot(direction.normalized, forVec) > 0.5 && crossVec.y > 0)
+                if (Vector3.Dot(direction.normalized, forwardVec) > 0.5 && crossVec.y < 0)
                 {
 
                     isDetected = true;
