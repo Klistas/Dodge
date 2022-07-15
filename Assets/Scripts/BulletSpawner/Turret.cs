@@ -10,11 +10,38 @@ public class Turret : MonoBehaviour
     private float spawnRateMax = 2f;
     private float spawnRate;
     private float elapsedTime;
+    public bool isDetect;
+    public Transform Target;
+    float dotValue = 0f;
+    public float angleRange = 60f;
+    public float distance = 20f;
 
     void Start()
     {
         spawnRate = Random.Range(spawnRateMin, spawnRateMax);
     }
+    void Update()
+    {
+        dotValue = Mathf.Cos(Mathf.Deg2Rad * (angleRange / 2));
+        Vector3 direction = Target.position - transform.position;
+        if (direction.magnitude < distance)
+        {
+            if (Vector3.Dot(direction.normalized, transform.forward) > dotValue)
+            {
+               
+                isDetect = true;
+            }
+            else
+            {
+                isDetect = false;
+            }
+        }
+        else
+        {
+            isDetect = false;
+        }
+    }
+
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player")
@@ -32,4 +59,9 @@ public class Turret : MonoBehaviour
             
         }
     }
+  
 }
+
+
+ 
+
