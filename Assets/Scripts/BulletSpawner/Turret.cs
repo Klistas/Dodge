@@ -8,7 +8,6 @@ public class Turret : MonoBehaviour
     public Transform Target;
     private float elapsedTime;
     public bool isDetected;
-    public float angleRange = 60f;
     public float distance = 20f;
     public float Speed = 100f;
     public float rot;
